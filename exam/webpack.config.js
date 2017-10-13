@@ -1,10 +1,12 @@
-const { join, resolve } = require('path');
-const { createReadStream } = require('fs');
+const { join, resolve } = require('path')
+const { createReadStream } = require('fs')
 
-const webpack = require('webpack');
+const webpack = require('webpack')
 
-const HtmlPlugin = require('html-webpack-plugin');
-const HtmlTemplatePlugin = require('html-webpack-template');
+const HtmlPlugin = require('html-webpack-plugin')
+const HtmlTemplatePlugin = require('html-webpack-template')
+
+const sourcePath = join(__dirname, 'src')
 
 module.exports = {
     context: __dirname,
@@ -19,24 +21,25 @@ module.exports = {
             resolve('./node_modules'),
         ],
     },
-
+	
     module: {
         rules: [
-            {
-                test: /\.vue$/,
-                use: 'vue-loader',
+			{
+                test: /\.(js|jsx)$/,
+                use: ['babel-loader'],
+                include: sourcePath,
+				exclude: /node_modules/
             },
-
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: 'babel-loader',
-            }
+			{
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+                exclude: /node_modules/
+            },
         ],
     },
 
-    plugins: [
-        new HtmlPlugin({
+	plugins: [
+		new HtmlPlugin({
             filename: 'index.html',
             template: HtmlTemplatePlugin,
             inject: false,
@@ -48,19 +51,19 @@ module.exports = {
             'process.env': {
                 NODE_ENV: `"${process.env.NODE_ENV}"`,
             },
-        }),
+        })
     ],
-
+	
     devServer: {
         contentBase: './public/',
         hot: true,
         port: 9000,
         setup(app) {
             app.get('/api/tiles', function(req, res)  {
-                res.writeHead(200, { 'Content-Type' : 'application/json' });
+                res.writeHead(200, { 'Content-Type' : 'application/json' })
                 createReadStream(join(process.cwd(), 'api/tiles.json'), { encoding: 'utf-8' })
-                    .pipe(res);
-            });
+                    .pipe(res)
+            })
         },
     },
-};
+}
