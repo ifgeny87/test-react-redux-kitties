@@ -1,0 +1,266 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 12pt Tahoma, Arial, sans-serif;
+    color: #333;
+    background-color: #f5f5dd;
+}
+
+a {
+    color: #4285F4;
+}
+
+* {
+    clear: none;
+    box-sizing: border-box;
+}
+
+#app {
+    padding: 70px 0;
+    width: 900px;
+    margin: 0 auto;
+}
+
+.warning {
+    background: yellow;
+    border: 1px solid darkgoldenrod;
+    padding: 10px;
+}
+
+.error {
+    background: pink;
+    border: 1px solid red;
+    padding: 10px;
+}
+
+.kittyRect {
+    word-wrap: break-word;
+    display: inline-block;
+    margin: 2px 0;
+    border: 1px solid gray;
+    height: 150px;
+    position: relative;
+    background: white;
+    cursor: pointer;
+
+}
+
+.kittyRect::before {
+    content: "";
+    display: block;
+    margin:0;
+    padding:0;
+    background: center no-repeat;
+    opacity: .2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* transitions */
+    -webkit-transition: all .4s linear .1s;
+    -moz-transition: all .4s linear .1s;
+    -o-transition: all .4s linear .1s;
+    transition: all .4s linear .1s;
+}
+
+.kittyRect.normal {
+    width: 33%;
+}
+
+.kittyRect.double {
+    width: 66%;
+}
+
+.kittyRect .title {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    padding: 4px 8px;
+    font-size: 120%;
+    color: white;
+    background: rgba(50, 50, 50, .8);
+}
+
+.kittyRect .description {
+    position: absolute;
+    width: 100%;
+    top: 40px;
+    padding: 20px 10px;
+    font-style: italic;
+}
+
+.kittyRect:hover::before {
+    opacity: .5;
+}
+
+.kittyRect.selected::before {
+    opacity: 1;
+}
+
+.kittyRect.selected:hover::before {
+    opacity: 1;
+}
+
+.kittyRect.selected .title, .kittyRect.selected .description {
+    opacity: 0;
+}
+
+.kittyRect.kitty_a::before {
+    background-image: url('/img/kitty_a.jpg');
+    background-size: 110%;
+    background-position: 0 5%;
+}
+
+.kittyRect.kitty_b::before {
+    background-image: url('/img/kitty_b.jpg');
+    background-size: 100%;
+    background-position: center;
+}
+
+.kittyRect.kitty_c::before {
+    background-image: url('/img/kitty_c.jpg');
+    background-size: 100%;
+    background-position: center;
+}
+
+.kittyRect.kitty_d::before {
+    background-image: url('/img/kitty_d.jpg');
+    background-size: 100%;
+    background-position: center;
+}
+
+.kittyRect.kitty_e::before {
+    background-image: url('/img/kitty_e.jpg');
+    background-size: 100%;
+    background-position: 0 5%;
+}
+
+.kittyRect.kitty_f::before {
+    background-image: url('/img/kitty_f.jpg');
+    background-size: 100%;
+    background-position: center;
+}
+
+.kittyRect.kitty_g::before {
+    background-image: url('/img/kitty_g.jpg');
+    background-size: 100%;
+    background-position: 0 5%;
+}
+
+.kittyRect.kitty_h::before {
+    background-image: url('/img/kitty_h.jpg');
+    background-size: 100%;
+    background-position: center;
+}
+
+.kittyRect.kitty_i::before {
+    background-image: url('/img/kitty_i.jpg');
+    background-size: 100%;
+    background-position: 0 5%;
+}
+
+.kittyRect.kitty_j::before {
+    background-image: url('/img/kitty_j.jpg');
+    background-size: 120%;
+    background-position: center 0;
+}
+
+.trobber {
+    text-align: center;
+}
+
+.trobber div {
+    display: inline-block;
+    -webkit-animation: rotating 2s linear infinite;
+    -moz-animation: rotating 2s linear infinite;
+    -ms-animation: rotating 2s linear infinite;
+    -o-animation: rotating 2s linear infinite;
+    animation: rotating 2s linear infinite;
+}
+
+.trobber div span {
+    margin: 5px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background: gold;
+    display: inline-block;
+}
+
+@-webkit-keyframes rotating /* Safari and Chrome */
+{
+    from {
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotating {
+    from {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+/* Tablet width */
+@media (max-width: 1024px) {
+    #app {
+        padding: 40px 0;
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    .kittyRect.normal {
+        width: 50%;
+    }
+
+    .kittyRect.double {
+        width: 100%;
+    }
+}
+
+/* Mobile width */
+@media (max-width: 480px) {
+    #app {
+        padding: 20px 0;
+        width: 100%;
+    }
+
+    .kittyRect.normal, .kittyRect.double {
+        width: 100%;
+    }
+}
+
+/* Wrong width */
+@media (max-width: 300px) {
+    #app {
+        padding: 10px 0;
+        width: 300px;
+    }
+
+    .kittyRect.normal, .kittyRect.double {
+        width: 300px;
+    }
+}

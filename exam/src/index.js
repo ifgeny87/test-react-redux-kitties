@@ -1,12 +1,16 @@
-import Vue from 'vue';
+import React from 'react'
+import {render} from 'react-dom'
+import {Provider} from 'react-redux'
+import App from './containers/app'
+import configureStore from './store/configureStore'
 
-import App from './App.vue';
+import './styles/app.css'
 
-const app = new Vue({
+const store = configureStore()
 
-    render(h) {
-        return h(App);
-    },
-});
-
-app.$mount(document.querySelector('#app'));
+render(
+    <Provider store={store}>
+		<App />
+    </Provider>,
+    document.getElementById('app')
+)
