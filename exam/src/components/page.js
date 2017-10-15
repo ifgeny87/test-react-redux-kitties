@@ -19,11 +19,11 @@ class Page extends Component {
     }
 
     renderError() {
-        return <div className="error">Something happens wrong</div>
+        return <div className={'error'}>Something happens wrong</div>
     }
 
     renderTrobber() {
-        return <div className="trobber">
+        return <div className={'trobber'}>
             <div>
                 <span>Loa</span>
                 <span>ding</span>
@@ -35,7 +35,7 @@ class Page extends Component {
         const {kitties, selectedKitty} = this.props.page
 
         if (!kitties.success) {
-            return <div className="warning">
+            return <div className={'warning'}>
                 Server says: Kitties will not come :(
             </div>
         }
@@ -49,8 +49,8 @@ class Page extends Component {
             return <div key={index}
                         className={classList.join(' ')}
                         onClick={() => this.props.pageActions.selectKitty(index === selectedKitty ? null : index)}>
-                <div className="title">{title}</div>
-                <div className="description">{description}</div>
+                <div className={'kittyRect__title'}>{title}</div>
+                <div className={'kittyRect__description'}>{description}</div>
             </div>
         })
 
